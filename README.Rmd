@@ -1,0 +1,38 @@
+---
+title: "Ciência de Dados com R"
+author: "**Gerrio Barbosa**"
+
+#date: "`r format(Sys.Date(), format='%d/%m/%Y')`"
+encoding: "UTF-8"
+output:
+  #prettydoc::html_pretty:
+    #theme: architect
+    #highlight: github
+  github_document:
+    
+    #toc: true
+    #toc_depth: 2
+  
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Material do miniCurso
+
+[Slides](https://gerriosantos.github.io/ufc_minicurso_ecofin/#1)
+
+[Dados](https://drive.google.com/file/d/15FXSZ6-MSVM64vvI2lem27XkK2S7Yqzd/view?usp=share_link)
+
+
+
+
+<!-- [You Tube](https://youtu.be/YUPK3GBMKQY) -->
+
+
