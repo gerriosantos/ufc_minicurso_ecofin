@@ -24,6 +24,8 @@ class: center, middle, animated slideInRight fadeOutLeft, animated slideInRight 
 
 knitr::opts_chunk$set(echo = TRUE, message = FALSE,
                       warning = FALSE)
+library(magick)
+library(fontawesome)
 
 ```
 
@@ -67,10 +69,22 @@ xaringanExtra::use_extra_styles(
 ```
 
 ```{r xaringanExtra, echo = FALSE}
-xaringanExtra::use_progress_bar(color = "#0051BA", location = "top", 
+xaringanExtra::use_progress_bar(color = "#0b2e4d", location = "top", 
                                 height = "10px")
 ```
 
+Para acessar esse documento:
+
+```{r, echo=FALSE, fig.align='center'}
+
+url <- "https://gerriosantos.github.io/ufc_minicurso_ecofin/#1"
+plot(qrcode::qr_code(url, ecl = 'M'), col = c('white', '#0b2e4d'))
+
+```
+
+
+---
+class: center, middle, animated slideInRight fadeOutLeft, animated slideInRight fadeOutLeft
 
 # Introdução
 
@@ -335,6 +349,10 @@ write_delim()
 
 write_rds()
 
+# writexl
+
+write_xlsx()
+
 # openxlsx
 write.xlsx()
 
@@ -523,9 +541,9 @@ knitr::include_graphics('imagens/layers.png')
 
 # Miscelânea 
 
-1. Juntar as bases do Finbra e Inep, com as colunas de despesa com educação e Ideb e fazer um gráfico scatter plot para analisar a relação entre despesa e qualidade do ensino.
+1. Juntar as bases do Finbra e Inep, com as colunas de despesa com educação e Ideb e fazer um gráfico scatter plot para analisar a relação entre despesa e qualidade do ensino no ano de 2019.
 
-2. Fazer um mapa do estado do Ceará com Ideb e outro com a despesa per capita com educação.
+2. Fazer um mapa do estado do Ceará com Ideb e outro com a despesa per capita com educação para o ano de 2019.
 
 3. Fazer um gráfico com a série de tempo de despesas per capita de 2013 a 2020.
 
@@ -539,14 +557,8 @@ knitr::include_graphics('imagens/layers.png')
 
 - [Usando R nas Ciências Sociais](https://robsonol.github.io/workshop_r_ciencias_sociais/#/title-slide)
 
----
 
-```{r}
 
-url <- "https://www.google.com"
-qrcode_gen(url)
-
-```
 
 
 
