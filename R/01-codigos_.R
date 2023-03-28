@@ -6,8 +6,6 @@ gc()
 library(tidyverse)
 
 
-
-
 # readr ----
 
 df <- read_delim(file = 'data-raw/municipio.csv', delim = ',')
@@ -40,7 +38,12 @@ d2 <- df |> filter(sigla_uf == 'CE' | sigla_uf == 'PB')
 d3 <- df |> filter(!sigla_uf %in% c('CE', 'PB'))
 
 
-d4 <- df |> filter(str_detect(string = sigla_uf, pattern = 'B'))
+library(stringr)
+
+d4 <- df |> filter(str_detect(string = sigla_uf, pattern = 'G'))
+
+table(d4$sigla_uf)
+
 
 
 #' Como funciona o pacote `stringr`
@@ -53,7 +56,9 @@ str_extract(nn$nomes, pattern = '[0-9]+') # ou usar '[aA-zZ]+' para letras.
 
 str_detect(nn$nomes, pattern = '[0-9]+')
 
-str_sub(string = 'gerrio dos santos', 1, 6)
+
+
+str_sub(string = 'gerrio dos santos', 1, 7)
 
 str_sub(string = 'gerrio barbosa', -7, 14)
 
@@ -101,7 +106,7 @@ dd <- read_rds('data-raw/finbra_uf.rds') |>
 
 # ----------------------------------------------------------------------
 
-#' `group_by()` e `filter()`
+#' `group_by()` e `summarise()`
 
 
 d1 <- df |>
@@ -138,7 +143,7 @@ d2 <- df |>
   rename(
     nota_mt = nota_saeb_matematica, nota_lp = nota_saeb_lingua_portuguesa
     ) |>
-  #group_by(ano) |>
+  # group_by(ano) |>
   mutate(
     across(
       starts_with('nota'), ~ f_padronizacao(.x), .names = '{col}_pd'
@@ -160,6 +165,8 @@ gc()
 # ------------------------------------------------------------------------
 
 #' `*_join()`
+#'
+#'
 
 # Base despesa educacao 2019 ----
 f <- read_rds('data-raw/finbra_mun.rds') |>
@@ -208,6 +215,7 @@ d2 <- read_rds('data-raw/ideb.rds') |>
 
 # 1) Despesa Educ vs Ideb
 
+
 f <- read_rds('data-raw/finbra_mun.rds') |>
   filter(ano == 2019, estagio == 'Despesas Empenhadas',
          str_detect(string = id_conta_bd, pattern = "3.12.000")
@@ -223,15 +231,29 @@ p <- read_rds('data-raw/pop.rds') |>
   filter(ano == 2019) |>
   select(-sigla_uf)
 
+# purrr ----
+
+# df <- left_join(x = d, y = f, by = c('ano', 'id_municipio')) |>
+#   left_join(y = p, by = c('ano', 'id_municipio'))
+
 
 bases <- list(f, d, p)
 
 
+
+
 df <- reduce(bases, left_join) |>
-  mutate(desp_per_capita = round(valor / populacao, 2))
+  mutate(desp_per_capita = round(valor / populacao, 2)) |>
+  select(-c(valor, populacao))
 
 
 #' `ggplot()`
+
+# ggplot(data = df, mapping = aes(x = ideb, y = desp_per_capita))+
+#   geom_point(color = 'blue', size = 4)+
+#   theme_bw()
+
+
 
 g1 <- ggplot(data = df, mapping = aes(x = ideb, y = desp_per_capita))+
   geom_point(color = 'blue', size = 3)+
