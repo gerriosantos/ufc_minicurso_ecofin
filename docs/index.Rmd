@@ -122,6 +122,31 @@ O `R` usa uma _Integrated Development Environment_ (IDE) própria, com interface
 - Ferramentas poderosas como `Rmarkdown` e `shiny`.
 
 - Tem a IDE `Rstudio`, que facilita a interação com os dados.
+---
+class: center, middle, animated slideInRight fadeOutLeft, animated slideInRight fadeOutLeft
+
+# Instalação - R e RStudio
+---
+
+# Instalação para Windows
+
+- [Software R](https://cran.r-project.org/)
+
+- [RStudio Descktop](https://posit.co/download/rstudio-desktop/)
+
+# Instalação Linux e MacOs
+
+- [Linux](https://cran.r-project.org/)
+
+- [MacOS](https://cran.r-project.org/)
+
+# Livro da Curso-R
+
+- [Ciência de Dados em R](https://livro.curso-r.com/1-1-instalacao-do-r.html)
+
+
+
+
 
 ---
 class: center, middle, animated slideInRight fadeOutLeft
@@ -227,6 +252,20 @@ class: center, middle, animated slideInRight fadeOutLeft
     - Outros pacotes contidos no sistema **`R base`**: `utils`, `stats`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `tools`, `parallel`, `compiler`, `splines`, `tcltk`, `stats4`.
     
     - Pacotes "recomendados": `boot`, `class`, `cluster`, `codetools`, `foreign`, `KernSmooth`, `lattice`, `mgcv`, `nlme`, `rpart`, `survival`, `MASS`, `spatial`, `nnet`, `Matrix`.
+    
+
+```{r, eval=FALSE}
+
+sqrt(x = 16)
+
+unique(x = c(1,2,1,2,2,2,4,4))
+
+log(1)
+
+plot(x = rnorm(n = 1000, mean = 250, sd = 50))
+
+```
+
 
 ---
 
