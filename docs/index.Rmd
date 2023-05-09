@@ -328,6 +328,18 @@ knitr::include_graphics('imagens/tidyverse.png')
 
 # Criar projeto no R
 
+- Isola do ambiente de trabalho
+
+- Facilita colaboração
+
+- Reprodutibilidade
+
+- Gerenciamento de pacotes
+
+- Organização e documentação dos códigos
+
+
+---
 ```{r, echo=FALSE, fig.align='center', out.width = '50%'}
 knitr::include_graphics('imagens/rproject_.jpeg')
 
