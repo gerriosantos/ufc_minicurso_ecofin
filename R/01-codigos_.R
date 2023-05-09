@@ -337,6 +337,37 @@ walk2(
 
 
 
+# Mortes Covid ----
+
+# https://www.conass.org.br/painelconasscovid19/
+
+library(data.table)
+
+p <- "https://data.brasil.io/dataset/covid19/caso.csv.gz"
+
+# p <- "https://data.brasil.io/dataset/covid19/caso_full.csv.gz"
+# https://github.com/turicas/covid19-br/blob/master/api.md#boletim
+
+dd <- fread(input = p)
+
+
+d1 <- dd |>
+  mutate(ano = lubridate::year(date)) |>
+  filter(place_type == 'city', ano == 2020, state == 'CE') |>
+  select(date, ano, city_ibge_code, state, confirmed, deaths) |>
+  group_by(ano, cod_ibge = city_ibge_code) |>
+  filter(date == max(date))
+
+
+d1 |> group_by(ano) |> summarise(d = sum(deaths))
+
+
+
+
+
+
+
+
 
 
 

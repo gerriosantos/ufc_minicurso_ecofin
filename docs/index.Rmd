@@ -326,6 +326,15 @@ knitr::include_graphics('imagens/tidyverse.png')
 
 ---
 
+# Criar projeto no R
+
+```{r, echo=FALSE, fig.align='center', out.width = '50%'}
+knitr::include_graphics('imagens/rproject_.jpeg')
+
+```
+
+---
+
 
 # tibble
 
